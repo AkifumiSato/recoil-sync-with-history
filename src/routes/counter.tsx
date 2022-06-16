@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { userCounter } from './recoil'
 
 function Counter() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useRecoilState(userCounter)
 
   return (
     <div className="App">
@@ -13,7 +15,7 @@ function Counter() {
           width: 200,
         } }>
           counter: { count }
-          <button onClick={ () => setCount(count + 1) }>increment</button>
+          <button onClick={ () => setCount(prev => prev + 1) }>increment</button>
         </div>
       </div>
     </div>
